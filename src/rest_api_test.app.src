@@ -1,0 +1,13 @@
+{application, rest_api_test, [
+    {description, "REST APIS that can be used when testing monitoring and testing tools"},
+    {vsn, "0.1.0"},
+    {modules, []},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib,
+        cowboy
+    ]},
+    {mod, {rest_api_test_app, []}},
+    {env, []}
+]}.

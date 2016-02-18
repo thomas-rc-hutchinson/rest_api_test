@@ -1,0 +1,13 @@
+-name rest_api_test@127.0.0.1
+-setcookie rest_api_test
+-heart
+
+## Enable kernel poll and a few async threads
++K true
++A 64
+
+## Increase maximum processes number
++P 5000000
++Q 5000000
+
+-env ERL_MAX_PORTS 200000
