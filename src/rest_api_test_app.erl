@@ -19,6 +19,7 @@ start(_Type, _Args) ->
                {"/http_response", http_response_handler, [KeyValuePid]},
                {"/node", node_handler, [KeyValuePid]},
                {"/echo", echo_handler, [KeyValuePid]},
+               {"/rpc", rpc_handler, []},
                {"/module", module_handler, []},
                {"/module/:module", get_module_handler, []}]}]),
 					 
