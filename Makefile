@@ -1,5 +1,5 @@
 PROJECT = rest_api_test
-DEPS = cowboy
+DEPS = cowboy lager jiffy
 include erlang.mk
 
 

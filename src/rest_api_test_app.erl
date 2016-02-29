@@ -9,6 +9,7 @@ start(_Type, _Args) ->
         key_value_gen:put("sleep_millis",100,KeyValuePid),
         key_value_gen:put("req_id",1,KeyValuePid),
         IncreaseBy = 10,
+
         %%hack to ensure initial values are set
         timer:sleep(100),
 
@@ -17,11 +18,12 @@ start(_Type, _Args) ->
         {'_', [{"/increase_sleep", increase_sleep_handler, [KeyValuePid,IncreaseBy]},
                {"/http_response", http_response_handler, [KeyValuePid]},
                {"/node", node_handler, [KeyValuePid]},
-               {"/echo", echo_handler, [KeyValuePid]}]}
-					 ]),
-        cowboy:start_http(my_http_listener, 100, [{port, 8085}],
-        [{env, [{dispatch, Dispatch}]}]
-			 ),
+               {"/echo", echo_handler, [KeyValuePid]},
+               {"/module", module_handler, []},
+               {"/module/:module", get_module_handler, []}]}]),
+					 
+        cowboy:start_http(my_http_server, 100, 
+        [{port, 8085}],[{env, [{dispatch, Dispatch}]}]),
         rest_api_test_sup:start_link().
 
 stop(_State) ->

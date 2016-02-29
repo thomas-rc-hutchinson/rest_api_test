@@ -1,6 +1,6 @@
 -module(echo_handler).
 -behaviour(cowboy_http_handler).
-
+-compile([{parse_transform, lager_transform}]).
 -export([init/3]).
 -export([handle/2]).
 -export([terminate/3]).
@@ -11,7 +11,7 @@
 
 init(_, Req, [KeyValuePid]) ->
         ReqId = request:create_req_id(KeyValuePid),
-        io:format("[/echo] [ReqId=~p Qs=~p]~n", [ReqId, qs(Req)]),
+        lager:info("[/echo] [ReqId=~p Qs=~p]~n", [ReqId, qs(Req)]),
 	{ok, Req, #state{}}.
 
 handle(Req, State=#state{}) ->
