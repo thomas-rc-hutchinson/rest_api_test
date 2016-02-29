@@ -20,6 +20,7 @@ start(_Type, _Args) ->
                {"/node", node_handler, [KeyValuePid]},
                {"/echo", echo_handler, [KeyValuePid]},
                {"/rpc", rpc_handler, []},
+               {"/eval", erl_expr_eval_handler, []},
                {"/module", module_handler, []},
                {"/module/:module", get_module_handler, []}]}]),
 					 
