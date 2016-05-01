@@ -19,6 +19,7 @@ start(_Type, _Args) ->
                {"/http_response", http_response_handler, [KeyValuePid]},
                {"/node", node_handler, [KeyValuePid]},
                {"/echo", echo_handler, [KeyValuePid]},
+	       {"/ping", ping_handler, [KeyValuePid]},
                {"/rpc", rpc_handler, []},
                {"/eval", erl_expr_eval_handler, []},
                {"/module", module_handler, []},
